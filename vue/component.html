@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app1">
+    Hello {{ message }} !
+    <todo-item v-for="a in arr" v-bind:todo="a"></todo-item>
+</div>
+</body>
+
+<!--引入 Vue-->
+<script src="../js/vue.js"></script>
+<script>
+
+    Vue.component('todo-item', {
+        // todo-item 组件现在接受一个
+        // "prop"，类似于一个自定义 attribute。
+        // 这个 prop 名为 todo。
+        props: ['todo'],
+        template: '<li>{{ todo }}</li>'
+    })
+
+
+    let app1 = new Vue({
+        el: '#app1',
+        data: {
+            message: "oneyoung",
+            arr: ["a", "b", "c"],
+        }
+    })
+
+</script>
+</html>

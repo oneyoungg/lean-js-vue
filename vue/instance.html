@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue</title>
+</head>
+<body>
+<div id="app">
+    {{ message }}
+    <p></p>
+    <span @click="reverseMessage" :title="reversedMessage">
+        {{ message }}
+    </span>
+</div>
+</body>
+<script src="../js/vue.js"></script>
+
+<script>
+    let app = new Vue({
+        el: '#app',
+        data: {
+            message: "你好"
+        },
+        created: function () {
+            this.message = "Hello World!"
+        },
+        computed: {
+            // 计算属性的 getter
+            reversedMessage: function () {
+                // `this` 指向 vm 实例
+                return this.message.split('').reverse().join('')
+            }
+        },
+        methods: {
+            reverseMessage: function () {
+                this.message = this.message.split('').reverse().join('')
+            }
+        },
+        watch: {
+            message: function (newQuestion, oldQuestion) {
+                console.log("old: " + oldQuestion)
+                console.log("new: " + newQuestion)
+            }
+        }
+    })
+
+</script>
+</html>

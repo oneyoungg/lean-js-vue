@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="main">
+
+</div>
+
+</body>
+
+<script>
+    for (let i = 0; i < 3; i++) {
+        console.log(i)
+    }
+    // console.log(i)
+    console.log(1 + "1")
+
+    let num = 10;
+    if (num < 1) {
+        console.log(num)
+    } else {
+        console.log("哈哈")
+    }
+
+    while (true) {
+        num++
+        if (num > 15) {
+            console.log(num)
+            break;
+        }
+    }
+
+    do {
+        console.log(num)
+        num++
+    } while (num < 20)
+
+    let array = [1, 2, 3]
+    for (let number of array) {
+        console.log(number)
+    }
+
+    let object = {"name": "oneyoung", "age": 10}
+    let name = object && object.age
+    console.log(name)
+
+    let abc = 10
+
+    let count = abc > 10 ? "1" : "2"
+    console.log(count)
+
+    switch (count) {
+        case 1:
+            break;
+    }
+
+
+    let onj = {
+        "name": "oneyoung",
+        "org": {
+            "name": "apache",
+            "add": "china"
+        }
+    }
+    console.log(onj.org.name)
+
+    function Person(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    let you = new Person("oneyou", 24)
+    you.name = "oneyoung";
+    console.log(you.age + you.name)
+
+    for (const youKey in you) {
+        console.log(youKey)
+    }
+
+    let animals = ["dog", "cat", "hen"]
+
+    animals.forEach((value, index, arr) => {
+        console.log("value: " + value + " index: " + index + " arr: " + arr[index])
+    });
+
+    console.log(animals.toString());
+
+    function add(x, y) {
+        return x + y
+    }
+
+    function ad() {
+        let sum = 0;
+        for (let argument of arguments) {
+            sum += argument
+        }
+        return sum;
+    }
+
+    function avg(first, ...args) {
+        let sum = 0;
+        for (let arg of args) {
+            sum += arg
+        }
+        sum += first;
+        return sum / (args.length + 1)
+    }
+
+    console.log(add(1, 2, 3))
+    console.log(ad(1, 2, 3))
+    console.log(avg(1, 1, 2, 3))
+    // 是
+    console.log(avg.apply(null, [1, 2, 3]))
+
+    const avgg = function () {
+        let sum = 0;
+        let i = 0, j = arguments.length;
+        for (; i < j; i++) {
+            sum += arguments[i];
+        }
+        return sum / arguments.length;
+    };
+    console.log(avgg(1, 2, 3));
+
+    function countChars(elm) {
+        if (elm.nodeType == 3) { // 文本节点
+            return elm.nodeValue.length;
+        }
+        var count = 0;
+        for (var i = 0, child; child = elm.childNodes[i]; i++) {
+            count += countChars(child);
+        }
+        return count;
+    }
+
+    var charsInBody = (function counter(elm) {
+        if (elm.nodeType == 3) { // 文本节点
+            return elm.nodeValue.length;
+        }
+        var count = 0;
+        for (var i = 0, child; child = elm.childNodes[i]; i++) {
+            count += counter(child);
+        }
+        return count;
+    })(document.body);
+
+
+    let aa = {"na": "oneyoung", "cd": 123}
+    console.log("aa:" + aa)
+
+    function makePerson(first, last) {
+        return {
+            first: first,
+            last: last,
+            fullName: function() {
+                return this.first + ' ' + this.last;
+            },
+            fullNameReversed: function() {
+                return this.last + ', ' + this.first;
+            }
+        }
+    }
+    s = makePerson("Simon", "Willison");
+    s.fullName(); // "Simon Willison"
+    s.fullNameReversed(); // Willison, Simon
+
+</script>
+</html>

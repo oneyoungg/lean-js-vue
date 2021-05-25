@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+
+    function makePerson(first, last) {
+        return {
+            first: first,
+            last: last,
+            fullName: function() {
+                return this.first + ' ' + this.last;
+            },
+            fullNameReversed: function() {
+                return this.last + ', ' + this.first;
+            }
+        }
+    }
+    s = makePerson("Simon", "Willison");
+    s.fullName(); // "Simon Willison"
+    s.fullNameReversed(); // Willison, Simon
+
+
+    function Person(first, last) {
+        this.first = first;
+        this.last = last;
+        this.fullName = function() {
+            return this.first + ' ' + this.last;
+        }
+        this.fullNameReversed = function() {
+            return this.last + ', ' + this.first;
+        }
+    }
+    let e = new Person("Simon", "Willison");
+    console.log(e.fullName());
+    e.apply();
+
+    function personFullName() {
+        return this.first + ' ' + this.last;
+    }
+    function personFullNameReversed() {
+        return this.last + ', ' + this.first;
+    }
+
+    function Person(first, last) {
+        this.first = first;
+        this.last = last;
+        this.fullName = personFullName;
+        this.fullNameReversed = personFullNameReversed;
+    }
+
+    function trivialNew(constructor, ...args) {
+        var o = {}; // 创建一个对象
+        constructor.apply(o, args);
+        return o;
+    }
+
+    var bill = trivialNew(Person, "William", "Orange");
+
+    var bill = new Person("William", "Orange");
+
+
+
+</script>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+
+<script>
+
+    function avg(...args) {
+        let sum = 0;
+        for (let value of args) {
+            sum += value;
+        }
+        return sum / args.length;
+    }
+
+    avg(2, 3, 4, 5); // 3.5
+
+    avg.apply(null, [2, 3, 4, 5]); // 3.5
+
+    function makePerson(first, last) {
+        return {
+            first: first,
+            last: last,
+            fullName: function () {
+                return this.first + ' ' + this.last;
+            },
+            fullNameReversed: function () {
+                return this.last + ', ' + this.first;
+            }
+        }
+    }
+
+    s = makePerson("Simon", "Willison");
+    s.fullName(); // "Simon Willison"
+    s.fullNameReversed(); // Willison, Simon
+
+    let numbers = [1, 2, 2];
+    console.log(numbers.filter((value, index, array) => {
+        return array.indexOf(value) === index;
+    }));
+    numbers.push(3)
+
+    console.log(numbers);
+
+
+    function makeAdder(a) {
+        return function(b) {
+            return a + b;
+        }
+    }
+    let add5 = makeAdder(5);
+    let add20 = makeAdder(20);
+    console.log(add5(6)); // 11
+    console.log(add20(7)); // 27
+
+</script>
+</html>
